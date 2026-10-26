@@ -769,6 +769,32 @@
 
     .foot { display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; }
 
+    .gift-intro { max-width:820px; margin:0 auto 30px; text-align:center; color:#50636a; font-size:18px; }
+    .gift-shell { max-width:1050px; margin:0 auto; padding:clamp(18px,4vw,38px); border-radius:28px; background:rgba(255,248,234,.94); border:1px solid rgba(7,28,50,.14); box-shadow:var(--shadow); }
+    .gift-tabs { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; }
+    .gift-tab { border:1px solid rgba(7,28,50,.22); border-radius:999px; padding:12px 20px; color:var(--navy); background:#fff; font:700 15px Arial,sans-serif; cursor:pointer; }
+    .gift-tab[aria-pressed="true"] { color:white; background:var(--navy); border-color:var(--navy); }
+    .gift-layout { display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start; }
+    .gift-label { display:block; margin:0 0 10px; color:var(--navy); font:800 14px Arial,sans-serif; }
+    .design-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    .design-choice { padding:8px; border:2px solid transparent; border-radius:17px; background:white; color:var(--ink); text-align:left; cursor:pointer; box-shadow:0 5px 16px rgba(7,28,50,.08); }
+    .design-choice[aria-pressed="true"] { border-color:var(--teal); box-shadow:0 0 0 3px rgba(13,119,124,.13); }
+    .design-art { display:flex; align-items:center; justify-content:center; aspect-ratio:1.45; border-radius:11px; color:white; font-size:32px; background:linear-gradient(135deg,#0d777c,#0d2c45); }
+    .design-choice:nth-child(2) .design-art { background:linear-gradient(135deg,#427649,#d7ad5b); }
+    .design-choice:nth-child(3) .design-art { background:linear-gradient(135deg,#263d6c,#9d668e); }
+    .design-choice strong { display:block; margin:8px 2px 2px; font:700 12px/1.25 Arial,sans-serif; }
+    .gift-form { display:grid; gap:13px; }
+    .gift-form label { display:grid; gap:6px; color:var(--navy); font:700 13px Arial,sans-serif; }
+    .gift-form input,.gift-form textarea,.gift-form select { width:100%; min-height:44px; padding:11px 12px; border:1px solid rgba(7,28,50,.24); border-radius:10px; background:white; color:var(--ink); font:16px Arial,sans-serif; }
+    .gift-form textarea { min-height:96px; resize:vertical; }
+    .gift-form input:focus,.gift-form textarea:focus,.gift-form select:focus { outline:3px solid rgba(29,154,160,.24); border-color:var(--teal); }
+    .gift-note { margin:0; color:#52646c; font:13px/1.5 Arial,sans-serif; }
+    .gift-notice { margin-top:20px; padding:15px 17px; border-radius:14px; background:#eef7f4; border:1px solid rgba(13,119,124,.22); color:#164d50; font:14px/1.5 Arial,sans-serif; }
+    .gift-preview { display:none; margin-top:16px; padding:16px; border-radius:14px; background:white; border:1px solid var(--line); color:var(--ink); font:14px/1.5 Arial,sans-serif; }
+    .gift-preview[data-visible="true"] { display:block; }
+    .gift-preview p { margin:6px 0 0; }
+    @media(max-width:700px) { .gift-layout { grid-template-columns:1fr; } }
+    @media(max-width:420px) { .design-grid { gap:7px; } .design-choice { padding:5px; } .design-choice strong { font-size:11px; } }
     @media(max-width:960px) {
       .hero-grid,.inside,.mission,.grid2,.comparison,.outcome-grid { grid-template-columns:1fr; }
       .grid3 { grid-template-columns:1fr; }
@@ -804,6 +830,7 @@
       <nav class="links" aria-label="Main navigation">
         <a href="#inside">Mission Pack</a>
         <a href="#mission-one">Mission 01</a>
+        <a href="#send-a-card">Send a card</a>
         <a href="#pricing">Price</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -973,6 +1000,57 @@
       </div>
     </section>
 
+    <section id="send-a-card" class="section alt gift-section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">A little wonder, delivered</p>
+          <h2>Send a mission gift or a postcard</h2>
+          <p>Choose a Gaia-inspired design, add a personal note, and send something thoughtful by post.</p>
+        </div>
+        <p class="gift-intro">A parent or gift-giver can send a Mission 01 pack as a one-off gift, or send a standalone postcard. Choose a card design to preview the flow.</p>
+        <div class="gift-shell">
+          <div class="gift-tabs" role="group" aria-label="Choose what to send">
+            <button class="gift-tab" type="button" aria-pressed="true" data-mode="gift">Gift a mission pack</button>
+            <button class="gift-tab" type="button" aria-pressed="false" data-mode="postcard">Send a postcard</button>
+          </div>
+          <div class="gift-layout">
+            <div>
+              <span class="gift-label">1. Choose a card design</span>
+              <div class="design-grid" role="group" aria-label="Postcard designs">
+                <button class="design-choice" type="button" aria-pressed="true" data-design="Ocean Discoverer">
+                  <span class="design-art" aria-hidden="true">OCEAN</span><strong>Ocean Discoverer</strong>
+                </button>
+                <button class="design-choice" type="button" aria-pressed="false" data-design="Forest Guardian">
+                  <span class="design-art" aria-hidden="true">WILD</span><strong>Forest Guardian</strong>
+                </button>
+                <button class="design-choice" type="button" aria-pressed="false" data-design="Starlight Explorer">
+                  <span class="design-art" aria-hidden="true">NIGHT</span><strong>Starlight Explorer</strong>
+                </button>
+              </div>
+              <p class="gift-note" style="margin-top:12px">Designs shown are concept previews. Final artwork, print format, delivery countries and price will be confirmed before orders open.</p>
+            </div>
+            <form class="gift-form" id="card-order-form">
+              <div data-gift-only>
+                <label>Gift <select name="gift" required><option value="mission-01">One-off gift: Mission 01 — Ocean Discoverer</option></select></label>
+              </div>
+              <label>Recipient name <input name="recipient" autocomplete="name" required maxlength="80" placeholder="Who is the card for?"></label>
+              <label>Recipient mailing address <input name="address" autocomplete="street-address" required maxlength="180" placeholder="Street address"></label>
+              <label>Suburb / city <input name="city" autocomplete="address-level2" required maxlength="80"></label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <label>State / region <input name="region" autocomplete="address-level1" required maxlength="60"></label>
+                <label>Postcode <input name="postcode" autocomplete="postal-code" required maxlength="20"></label>
+              </div>
+              <label>Country <input name="country" autocomplete="country-name" required maxlength="60" value="Australia"></label>
+              <label>Your message <textarea name="message" maxlength="240" placeholder="Write a note (up to 240 characters)"></textarea></label>
+              <button class="btn primary" type="submit">Preview my order</button>
+              <p class="gift-note">This is a prototype only. It does not take payment or send/store your details. Final per-order print, postage and gift prices will be shown before checkout.</p>
+            </form>
+          </div>
+          <div class="gift-notice" role="note"><strong>Planned checkout:</strong> customer pays per order; no monthly fee to Gaia’s Secret Agents. Payment and print/postage charges must be connected and the final price confirmed before launch.</div>
+          <div class="gift-preview" id="card-order-preview" role="status" aria-live="polite" data-visible="false"></div>
+        </div>
+      </div>
+    </section>
     <section id="pricing" class="section alt">
       <div class="container">
         <div class="section-head">
@@ -1043,6 +1121,48 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const modeButtons = [...document.querySelectorAll(".gift-tab")];
+    const giftOnly = document.querySelector("[data-gift-only]");
+    const designButtons = [...document.querySelectorAll(".design-choice")];
+    const orderForm = document.getElementById("card-order-form");
+    const preview = document.getElementById("card-order-preview");
+    let sendMode = "gift";
+    let selectedDesign = "Ocean Discoverer";
+
+    modeButtons.forEach((button) => button.addEventListener("click", () => {
+      sendMode = button.dataset.mode;
+      modeButtons.forEach((tab) => tab.setAttribute("aria-pressed", String(tab === button)));
+      giftOnly.hidden = sendMode !== "gift";
+      giftOnly.querySelector("select").required = sendMode === "gift";
+      preview.dataset.visible = "false";
+    }));
+
+    designButtons.forEach((button) => button.addEventListener("click", () => {
+      selectedDesign = button.dataset.design;
+      designButtons.forEach((design) => design.setAttribute("aria-pressed", String(design === button)));
+      preview.dataset.visible = "false";
+    }));
+
+    orderForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!orderForm.reportValidity()) return;
+      const values = new FormData(orderForm);
+      const recipient = String(values.get("recipient") || "").trim();
+      const message = String(values.get("message") || "").trim();
+      const item = sendMode === "gift" ? "Mission 01 gift pack" : "standalone postcard";
+      preview.replaceChildren();
+      const heading = document.createElement("strong");
+      heading.textContent = "Prototype order preview";
+      const summary = document.createElement("p");
+      summary.textContent = `${item} · ${selectedDesign} · for ${recipient}`;
+      const note = document.createElement("p");
+      note.textContent = message ? `Your message: “${message}”` : "No personal message added.";
+      const reminder = document.createElement("p");
+      reminder.textContent = "Nothing has been submitted, charged, or mailed. Checkout and fulfilment are not connected yet.";
+      preview.append(heading, summary, note, reminder);
+      preview.dataset.visible = "true";
+    });
   </script>
 </body>
 </html>
